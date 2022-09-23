@@ -2,18 +2,22 @@ import './App.css';
 import './hojas-de-estilo/Boton.css'
 import jojosbanner from './imagenes/jojosbanner.jpg';
 import { Boton } from './componentes/Boton';
-import { Contador } from './componentes/'
+import { Contador } from './componentes/Contador'
+import { useState } from 'react';
 function App() {
 
-  const manejarClick = () => {
-    console.log("click");
+  const [numClicks, setNumClicks] = useState(0);
 
-  }
+  const manejarClick = () => {
+    setNumClicks(numClicks + 1);
+    
+
+  };
   
   const reiniciarContador = () => {
-    console.log("reiniciar");
+    setNumClicks(0);
 
-  }
+  };
 
   return (
     <div className="App">
@@ -26,6 +30,7 @@ function App() {
 
       </div>
       <div className='contenedor-principal'>
+        <Contador numClicks = {numClicks}  />
         <Boton
           texto='Click'
           esBotonDeClick={true}
